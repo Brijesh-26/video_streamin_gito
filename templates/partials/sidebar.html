@@ -53,7 +53,7 @@
             </div>
         </a>
         {% else %}
-        <a href="#">
+        <a href="/yt_auth/accounts/login/">
 
             <div class="sidebar__category">
                 <i class="material-icons">play_arrow</i>
@@ -63,21 +63,41 @@
         {% endif %}
 
         <!-- Single Category -->
-        <a href="saved_videos/">
+        {% if request.user.is_authenticated %}
+        <a href="/saved_videos/">
 
         <div class="sidebar__category">
             <i class="material-icons">watch_later</i>
             <span>Watch Later</span>
         </div>
         </a>
+        {% else %}
+        <a href="/yt_auth/accounts/login/">
+
+            <div class="sidebar__category">
+                <i class="material-icons">watch_later</i>
+                <span>Watch Later</span>
+            </div>
+        </a>
+        {% endif %}
         <!-- Single Category -->
-        <a href="liked_videos/">
+        {% if request.user.is_authenticated %}
+        <a href="/liked_videos/">
 
             <div class="sidebar__category">
                 <i class="material-icons">thumb_up</i>
                 <span>Liked Videos</span>
             </div>
         </a>
+        {% else %}
+        <a href="/yt_auth/accounts/login/">
+
+            <div class="sidebar__category">
+                <i class="material-icons">thumb_up</i>
+                <span>Liked Videos</span>
+            </div>
+        </a>
+        {% endif %}
         
 
         
