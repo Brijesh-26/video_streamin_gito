@@ -6,6 +6,9 @@ urlpatterns = [
     path('', views.index, name= "index"),
     path('watch/<int:pk>/', views.videoDetail, name="video-detail"),
     
+    # new feature added
+    path("trending/", views.trending, name="trending"),
+    
     
     #saving comment to db
     path("ajax-save-comment/", views.ajax_save_comment, name= "save-comment"),
@@ -34,6 +37,6 @@ urlpatterns = [
     path("liked_videos/", views.liked_videos, name="liked-video"),
     
     # saved videos
-    path("saved_videos/", views.liked_videos, name="saved-video"),
+    path("saved_videos/", views.saved_videos, name="saved-video"),
     
 ]

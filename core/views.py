@@ -185,9 +185,14 @@ def tag_list(request, tag_slug=None):
 
 
 
-# writing code for sidebar
+def trending(request):
+    video = Video.objects.filter(visibility="public").order_by("-views")
+    context = {
+        "video":video
+    }
+    return render(request, "trending.html", context)
 
-# BSDK ISKO JLDI SHI KR
+
 
 def liked_videos(request):
     user= request.user
@@ -204,7 +209,9 @@ def saved_videos(request):
     
     profile= Profile.objects.get(user=request.user.id)
     
-    video= profile.saved_videos
+    video= profile.saved_videos.all()
+    
+    print(video)
     
     context= {
         "video": video

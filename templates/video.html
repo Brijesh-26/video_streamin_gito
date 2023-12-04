@@ -59,16 +59,16 @@
                             <label for=""><span id="like-count"></span></label>
                         </div>
 
-                        <div class="icon">
+                        <!-- <div class="icon">
                             <button style="font-size: 17px;" id="like-button" onclick="addlike()"><i class="fa fa-thumbs-down"></i></button>
                             <label for=""><span id="like-count"></span></label>
                             
-                        </div>
+                        </div> -->
 
-                        <div class="icon">
+                        <!-- <div class="icon">
                             <a href=""><i class="fa fa-share"></i></a>
                             <label for="">Share</label>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="icon">
                             <a href=""><i class="fa fa-scissors"></i></a>
@@ -77,7 +77,7 @@
                         {% if user.is_authenticated %}
                             <div class="icon">
                                 <!-- {% url 'save-video' video.id %} -->
-                                <a href="">
+                                <a href="{% url 'save-video' video.id %}">
                                     <i class="fa fa-bookmark"></i>
                                     <label for="">Save</label>
                                 </a>

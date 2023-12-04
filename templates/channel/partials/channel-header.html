@@ -6,6 +6,7 @@
     {% if channel.channel_art.url %}
     <img style="object-fit: cover;" src="{{ channel.channel_art.url }}" alt="">
     {% else %}
+    <!-- if there is no image provided by the user  -->
     <img src="https://wallpaper.dog/large/10702685.jpg" alt="">
 
     {% endif %}
