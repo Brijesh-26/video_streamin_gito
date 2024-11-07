@@ -1,1 +1,3 @@
-ytenv/
+.env
+venv/
+__pycache__/

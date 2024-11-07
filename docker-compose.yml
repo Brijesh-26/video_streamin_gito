@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Postgres-123
+    networks:
+      - ytprj-network
+
+  web:
+    build: .
+    command: [ "./entrypoint.sh", "-s", "WEB" ]
+    volumes:
+      - .:/app 
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db  
+    environment:
+      DEBUG: 'True'
+    networks:
+      - ytprj-network
+
+volumes:
+  postgres_data:
+
+networks:
+  ytprj-network:
