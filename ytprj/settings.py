@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'why-this-key-is-not-fetched-from-env'
 
 DEBUG = os.environ.get('DEBUG', False) == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
 
 INSTALLED_APPS = [
     # default django apps
@@ -63,11 +63,11 @@ WSGI_APPLICATION = 'ytprj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'db-name'),
-        'USER': os.environ.get('DB_USER', 'db-user'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'db-password'),
-        'HOST': os.environ.get('DB_HOST', 'db-host'),
-        'PORT': os.environ.get('DB_PORT', 5432)
+        'NAME': os.environ.get('DATABASE_NAME', 'db-name'),
+        'USER': os.environ.get('DATABASE_USER', 'db-user'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'db-password'),
+        'HOST': os.environ.get('DATABASE_HOST', 'db-host'),
+        'PORT': os.environ.get('DATABASE_PORT', 5432)
     }
 }
 

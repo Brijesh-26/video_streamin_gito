@@ -1,31 +1,17 @@
-FROM python:3.10-slim as base
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-FROM base AS python-deps 
+# Set the working directory inside the container
+WORKDIR /app
 
-RUN apt update && apt install bash gcc git -y && pip install --upgrade pip
+# Copy the current directory contents into the container at /app
+COPY . /app/
 
-COPY requirements.txt .
-RUN python -m venv .venv
-RUN .venv/bin/pip install -r requirements.txt --prefer-binary
-COPY .git/HEAD .
-RUN mv HEAD git-commit.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Expose the port that Gunicorn will use
+EXPOSE 8080
 
-FROM base AS runtime
-COPY --from=python-deps /.venv /.venv
-ENV PATH /.venv/bin:$PATH
-
-RUN apt update && apt install -y wkhtmltopdf
-
-RUN adduser --disabled-password appuser
-WORKDIR /home/appuser
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
-USER appuser
-
-COPY . .
-RUN mkdir logs
-COPY --from=python-deps git-commit.txt .
-EXPOSE 8000
-ENTRYPOINT [ "./entrypoint.sh" ]
-
+# Run the Django application using Gunicorn
+CMD ["gunicorn", "ytprj.wsgi:application", "--bind", "0.0.0.0:8080"]
