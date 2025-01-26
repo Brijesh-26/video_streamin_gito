@@ -108,10 +108,10 @@ def log_out(request):
 
 
 def send_mail_after_registration(email , token):
-    import os
+    # import os
     print("sending email")
-    # base_link= "http://127.0.0.1:8000"
-    base_link= os.environ.get('BASE_LINK')
+    base_link= "http://127.0.0.1:8080"
+    # base_link= os.environ.get('BASE_LINK')
     # base_link= "https://videofy-web.onrender.com"
     subject = 'Your accounts need to be verified'
     message = f'Hi paste the link to verify your account {base_link}/yt_auth/verify/{token}'
